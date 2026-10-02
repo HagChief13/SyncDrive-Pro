@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="SyncDrive Pro — gestión y sincronización local de archivos"
+    >
+
+    <meta
+        name="theme-color"
+        content="#0a0a0a"
+    >
+
+    <meta
+        name="color-scheme"
+        content="dark"
+    >
+
+    <title>SyncDrive Pro</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="logo.png"
+    >
+
+
+    <!-- =====================================================
+         VISUALIZACIÓN DE ARCHIVOS
+    ====================================================== -->
+
+    <!-- PDF.js -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs"
+        type="module">
+    </script>
+
+
+    <!-- DOCX -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js">
+    </script>
+
+
+    <!-- Excel -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js">
+    </script>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">
+                ↕
+            </div>
+
+
+            <div class="brand-text">
+
+                <strong>
+                    SYNC<span>DRIVE</span>
+                </strong>
+
+                <small>
+                    PRO / LOCAL FILE SYSTEM
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVEGACIÓN -->
+
+        <nav class="sidebar-nav">
+
+
+            <div class="nav-label">
+                WORKSPACE
+            </div>
+
+
+            <button
+                type="button"
+                class="nav-item active"
+                data-panel="dashboard"
+            >
+
+                <span class="nav-icon">
+                    ◈
+                </span>
+
+                <span>
+                    Inicio
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="nav-item"
+                data-panel="files"
+            >
+
+                <span class="nav-icon">
+                    ▣
+                </span>
+
+                <span>
+                    Archivos
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="nav-item"
+                data-panel="recent"
+            >
+
+                <span class="nav-icon">
+                    ◷
+                </span>
+
+                <span>
+                    Recientes
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="nav-item"
+                data-panel="favorites"
+            >
+
+                <span class="nav-icon">
+                    ☆
+                </span>
+
+                <span>
+                    Favoritos
+                </span>
+
+            </button>
+
+
+            <div class="nav-label nav-label-history">
+                SYSTEM
+            </div>
+
+
+            <button
+                type="button"
+                class="nav-item"
+                data-panel="history"
+            >
+
+                <span class="nav-icon">
+                    ↻
+                </span>
+
+                <span>
+                    Historial
+                </span>
+
+            </button>
+
+
+        </nav>
+
+
+        <!-- ALMACENAMIENTO -->
+
+        <div class="sidebar-storage">
+
+
+            <div class="storage-title">
+
+                <span>
+                    ALMACENAMIENTO
+                </span>
+
+                <span>
+                    LOCAL
+                </span>
+
+            </div>
+
+
+            <div class="storage-visual">
+
+                <div class="storage-ring">
+
+                    <span>
+                        ↕
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        ARCHIVOS LOCALES
+                    </strong>
+
+                    <small>
+                        Control total de tus datos
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="storage-mini-bar">
+
+                <div class="storage-mini-fill"></div>
+
+            </div>
+
+
+            <small class="storage-note">
+                El navegador controla el acceso
+                a tus carpetas y archivos.
+            </small>
+
+        </div>
+
+
+        <!-- SIDEBAR FOOTER -->
+
+        <div class="sidebar-footer">
+
+            <span class="system-indicator"></span>
+
+            <span>
+                SISTEMA OPERATIVO
+            </span>
+
+            <strong>
+                ONLINE
+            </strong>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <div class="main-shell">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================= -->
+
+        <header class="header">
+
+
+            <div class="header-left">
+
+
+                <button
+                    type="button"
+                    class="mobile-menu-button"
+                    aria-label="Abrir menú"
+                >
+                    ☰
+                </button>
+
+
+                <div class="breadcrumb">
+
+                    <span>
+                        SYNC DRIVE
+                    </span>
+
+                    <b>
+                        /
+                    </b>
+
+                    <strong>
+                        INICIO
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-right">
+
+
+                <!-- BUSCADOR -->
+
+                <div class="global-search">
+
+                    <span>
+                        ⌕
+                    </span>
+
+                    <input
+                        type="search"
+                        placeholder="Buscar archivos..."
+                        autocomplete="off"
+                        aria-label="Buscar archivos"
+                    >
+
+                    <kbd>
+                        /
+                    </kbd>
+
+                </div>
+
+
+                <!-- ESTADO -->
+
+                <div class="header-status">
+
+                    <span class="status-dot"></span>
+
+                    <span>
+                        SISTEMA LISTO
+                    </span>
+
+                </div>
+
+
+                <div class="header-version">
+                    v1.0
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+
+        <main class="content">
+
+
+            <!-- =================================================
+                 DASHBOARD
+            ================================================== -->
+
+            <section
+                class="dashboard-panel"
+                data-panel-content="dashboard"
+            >
+
+
+                <!-- HERO -->
+
+                <div class="dashboard-hero">
+
+
+                    <div class="hero-copy">
+
+                        <span class="eyebrow">
+                            LOCAL FILE MANAGEMENT
+                        </span>
+
+
+                        <h1>
+                            SYNC DRIVE
+                            <span>PRO</span>
+                        </h1>
+
+
+                        <p>
+                            Gestiona, visualiza y sincroniza
+                            tus archivos directamente desde
+                            el navegador.
+                        </p>
+
+
+                        <div class="hero-status">
+
+                            <span class="hero-status-dot"></span>
+
+                            MOTOR LOCAL OPERATIVO
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-visual">
+
+
+                        <div class="hero-orbit orbit-one"></div>
+
+                        <div class="hero-orbit orbit-two"></div>
+
+                        <div class="hero-orbit orbit-three"></div>
+
+
+                        <div class="hero-core">
+
+                            <span>
+                                ↕
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ACCIONES PRINCIPALES -->
+
+                <section class="workspace-section">
+
+
+                    <div class="section-heading">
+
+
+                        <div>
+
+                            <span class="section-kicker">
+                                01 / SOURCE
+                            </span>
+
+                            <h2>
+                                ¿Qué quieres sincronizar?
+                            </h2>
+
+                            <p>
+                                Selecciona un archivo individual
+                                o una carpeta completa.
+                            </p>
+
+                        </div>
+
+
+                        <span class="section-state">
+                            WAITING
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="source-mode-grid">
+
+
+                        <!-- ARCHIVO -->
+
+                        <button
+                            id="selectFileBtn"
+                            type="button"
+                            class="source-mode-card"
+                        >
+
+                            <span class="source-mode-icon">
+                                ◫
+                            </span>
+
+
+                            <span class="source-mode-content">
+
+                                <strong>
+                                    Seleccionar archivo
+                                </strong>
+
+                                <small>
+                                    PDF, Word, Excel,
+                                    imágenes, vídeo y más.
+                                </small>
+
+                            </span>
+
+
+                            <span class="source-mode-arrow">
+                                →
+                            </span>
+
+                        </button>
+
+
+
+                        <!-- CARPETA -->
+
+                        <button
+                            id="selectFolderBtn"
+                            type="button"
+                            class="source-mode-card"
+                        >
+
+                            <span class="source-mode-icon">
+                                ▱
+                            </span>
+
+
+                            <span class="source-mode-content">
+
+                                <strong>
+                                    Seleccionar carpeta
+                                </strong>
+
+                                <small>
+                                    Mantén la estructura
+                                    completa de carpetas.
+                                </small>
+
+                            </span>
+
+
+                            <span class="source-mode-arrow">
+                                →
+                            </span>
+
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- INPUT FALLBACK -->
+
+                    <input
+                        id="folderInput"
+                        type="file"
+                        webkitdirectory
+                        directory
+                        multiple
+                        hidden
+                    >
+
+
+
+                    <!-- ARCHIVO SELECCIONADO -->
+
+                    <div
+                        id="selectedFileInfo"
+                        class="selection-info hidden"
+                    >
+
+                        <div class="selection-info-icon">
+                            ◫
+                        </div>
+
+
+                        <div class="selection-info-main">
+
+                            <strong id="selectedFileName">
+                                Archivo seleccionado
+                            </strong>
+
+
+                            <span id="selectedFileDetails">
+                                --
+                            </span>
+
+
+                            <span
+                                id="autoSyncStatus"
+                                class="auto-sync-status"
+                            >
+                                ⚪ Sin sincronización automática
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            id="changeFileBtn"
+                            type="button"
+                            class="small-action-btn"
+                        >
+                            Cambiar
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- CARPETA SELECCIONADA -->
+
+                    <div
+                        id="selectedFolderInfo"
+                        class="selection-info hidden"
+                    >
+
+                        <div class="selection-info-icon">
+                            ▱
+                        </div>
+
+
+                        <div class="selection-info-main">
+
+                            <strong id="selectedFolderName">
+                                Carpeta seleccionada
+                            </strong>
+
+
+                            <span id="selectedFolderDetails">
+                                --
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            id="changeFolderBtn"
+                            type="button"
+                            class="small-action-btn"
+                        >
+                            Cambiar
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- AUTO SYNC -->
+
+                    <div
+                        id="automaticSyncPanel"
+                        class="automatic-sync-panel hidden"
+                    >
+
+                        <div class="automatic-sync-left">
+
+                            <div class="automatic-sync-icon">
+                                ⚡
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    Sincronización automática
+                                </strong>
+
+                                <p>
+                                    Detecta cambios en el archivo
+                                    y actualiza automáticamente
+                                    el destino.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="autoSyncCheckbox"
+                            >
+
+                            <span class="switch-slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     ARCHIVOS ENCONTRADOS
+                ================================================== -->
+
+                <section
+                    id="filesSection"
+                    class="workspace-section files-section hidden"
+                >
+
+
+                    <div class="section-heading">
+
+
+                        <div>
+
+                            <span class="section-kicker">
+                                02 / FILES
+                            </span>
+
+                            <h2>
+                                Archivos encontrados
+                            </h2>
+
+                            <p id="filesSummary">
+                                0 archivos
+                            </p>
+
+                        </div>
+
+
+                        <div class="files-toolbar">
+
+
+                            <div class="file-filters">
+
+                                <button
+                                    type="button"
+                                    class="filter active"
+                                    data-filter="all"
+                                >
+                                    Todos
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="filter"
+                                    data-filter="image"
+                                >
+                                    Imágenes
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="filter"
+                                    data-filter="pdf"
+                                >
+                                    PDF
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="filter"
+                                    data-filter="document"
+                                >
+                                    Documentos
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="filter"
+                                    data-filter="spreadsheet"
+                                >
+                                    Hojas
+                                </button>
+
+                            </div>
+
+
+                            <label class="file-search">
+
+                                <span>
+                                    ⌕
+                                </span>
+
+                                <input
+                                    id="searchInput"
+                                    class="search"
+                                    type="search"
+                                    placeholder="Buscar..."
+                                    autocomplete="off"
+                                >
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="filesList"
+                        class="files-list"
+                    ></div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     DESTINO
+                ================================================== -->
+
+                <section class="workspace-section">
+
+
+                    <div class="section-heading">
+
+
+                        <div>
+
+                            <span class="section-kicker">
+                                03 / DESTINATION
+                            </span>
+
+                            <h2>
+                                ¿Dónde quieres guardarlos?
+                            </h2>
+
+                            <p>
+                                Selecciona una carpeta de destino
+                                con permiso de escritura.
+                            </p>
+
+                        </div>
+
+
+                        <span class="section-state">
+                            OUTPUT
+                        </span>
+
+                    </div>
+
+
+
+                    <div
+                        id="usbDestination"
+                        class="destination"
+                    >
+
+
+                        <div
+                            id="destinationIcon"
+                            class="destination-icon"
+                        >
+                            ◉
+                        </div>
+
+
+                        <div class="destination-info">
+
+                            <strong id="destinationName">
+                                Sin destino seleccionado
+                            </strong>
+
+
+                            <span id="destinationType">
+                                Selecciona una carpeta
+                            </span>
+
+                        </div>
+
+
+                        <div class="destination-space">
+
+                            <strong id="destinationStatus">
+                                ---
+                            </strong>
+
+
+                            <span id="destinationStatusText">
+                                sin seleccionar
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            id="destinationCheck"
+                            class="check"
+                            style="display:none;"
+                        >
+                            ✓
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STORAGE -->
+
+                    <div class="storage">
+
+
+                        <div class="storage-header">
+
+                            <span>
+                                ESTADO DEL DESTINO
+                            </span>
+
+
+                            <strong id="storageText">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="storage-bar">
+
+                            <div
+                                id="storageProgress"
+                                class="storage-used"
+                                style="width:0%;"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- SELECT DESTINATION -->
+
+                    <button
+                        id="selectDestinationBtn"
+                        type="button"
+                        class="destination-folder"
+                    >
+
+                        <span>
+                            ▱
+                        </span>
+
+
+                        <span id="destinationButtonText">
+                            Seleccionar carpeta
+                        </span>
+
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- LAST DESTINATION -->
+
+                    <div
+                        id="lastDestinationPanel"
+                        class="last-destination hidden"
+                    >
+
+                        <div class="last-destination-info">
+
+                            <span class="last-destination-icon">
+                                ◷
+                            </span>
+
+
+                            <div>
+
+                                <strong>
+                                    Último destino
+                                </strong>
+
+
+                                <span id="lastDestinationName">
+                                    --
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            id="useLastDestinationBtn"
+                            type="button"
+                            class="use-last-destination-btn"
+                        >
+                            Usar
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     SYNC MODE
+                ================================================== -->
+
+                <section class="workspace-section">
+
+
+                    <div class="section-heading">
+
+
+                        <div>
+
+                            <span class="section-kicker">
+                                04 / SYNC ENGINE
+                            </span>
+
+                            <h2>
+                                Sincronización
+                            </h2>
+
+                            <p>
+                                Elige cómo quieres copiar
+                                tus archivos.
+                            </p>
+
+                        </div>
+
+
+                        <span class="section-state">
+                            ENGINE
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="sync-modes">
+
+
+                        <!-- SMART -->
+
+                        <label class="mode selected">
+
+                            <input
+                                type="radio"
+                                name="syncMode"
+                                value="smart"
+                                checked
+                            >
+
+
+                            <div class="mode-icon">
+                                ✦
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    Smart Sync
+                                </strong>
+
+
+                                <span>
+                                    Optimiza la sincronización
+                                    de archivos modificados.
+                                </span>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <!-- FULL -->
+
+                        <label class="mode">
+
+                            <input
+                                type="radio"
+                                name="syncMode"
+                                value="full"
+                            >
+
+
+                            <div class="mode-icon">
+                                ↻
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    Copia completa
+                                </strong>
+
+
+                                <span>
+                                    Copia nuevamente todos
+                                    los archivos seleccionados.
+                                </span>
+
+                            </div>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- SYNC BUTTON -->
+
+                    <button
+                        id="syncBtn"
+                        type="button"
+                        class="sync-button"
+                        disabled
+                    >
+
+                        <span>
+                            SELECCIONA ARCHIVOS
+                        </span>
+
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     HISTORIAL
+                ================================================== -->
+
+                <section class="history-section">
+
+
+                    <div class="history-header">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                ACTIVITY LOG
+                            </span>
+
+
+                            <h2>
+                                Historial
+                            </h2>
+
+
+                            <p>
+                                Tus últimas sincronizaciones.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            id="clearHistoryBtn"
+                            type="button"
+                            class="text-button"
+                        >
+                            Limpiar historial
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="historyList"
+                        class="history-list"
+                    ></div>
+
+                </section>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ARCHIVOS / PANEL SECUNDARIO
+            ================================================== -->
+
+            <section
+                class="secondary-panel hidden"
+                data-panel-content="files"
+            >
+
+                <div class="secondary-panel-header">
+
+                    <span class="section-kicker">
+                        FILE MANAGER
+                    </span>
+
+                    <h2>
+                        Archivos
+                    </h2>
+
+                    <p>
+                        Los archivos seleccionados aparecerán
+                        aquí cuando inicies una sesión.
+                    </p>
+
+                </div>
+
+
+                <div class="secondary-empty">
+
+                    <div>
+                        ▣
+                    </div>
+
+                    <strong>
+                        Sin archivos cargados
+                    </strong>
+
+                    <span>
+                        Selecciona un archivo o carpeta
+                        desde el panel de inicio.
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RECIENTES
+            ================================================== -->
+
+            <section
+                class="secondary-panel hidden"
+                data-panel-content="recent"
+            >
+
+                <div class="secondary-panel-header">
+
+                    <span class="section-kicker">
+                        ACTIVITY
+                    </span>
+
+                    <h2>
+                        Recientes
+                    </h2>
+
+                    <p>
+                        Accesos y sincronizaciones recientes.
+                    </p>
+
+                </div>
+
+
+                <div class="secondary-empty">
+
+                    <div>
+                        ◷
+                    </div>
+
+                    <strong>
+                        Sin actividad reciente
+                    </strong>
+
+                    <span>
+                        Tu actividad aparecerá aquí.
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 FAVORITOS
+            ================================================== -->
+
+            <section
+                class="secondary-panel hidden"
+                data-panel-content="favorites"
+            >
+
+                <div class="secondary-panel-header">
+
+                    <span class="section-kicker">
+                        PERSONAL
+                    </span>
+
+                    <h2>
+                        Favoritos
+                    </h2>
+
+                    <p>
+                        Accesos que quieras mantener disponibles.
+                    </p>
+
+                </div>
+
+
+                <div class="secondary-empty">
+
+                    <div>
+                        ☆
+                    </div>
+
+                    <strong>
+                        No hay favoritos
+                    </strong>
+
+                    <span>
+                        Todavía no has añadido ningún elemento.
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 HISTORIAL PANEL
+            ================================================== -->
+
+            <section
+                class="secondary-panel hidden"
+                data-panel-content="history"
+            >
+
+                <div class="secondary-panel-header">
+
+                    <span class="section-kicker">
+                        SYSTEM LOG
+                    </span>
+
+                    <h2>
+                        Historial completo
+                    </h2>
+
+                    <p>
+                        Registro local de tus sincronizaciones.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="history-list history-list-secondary"
+                ></div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="app-footer">
+
+            <span>
+                SYNCDRIVE PRO
+            </span>
+
+            <span>
+                LOCAL FILE ENGINE
+            </span>
+
+            <span>
+                2026
+            </span>
+
+        </footer>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     TOASTS
+========================================================= -->
+
+<div
+    id="toastContainer"
+    class="toast-container"
+    aria-live="polite"
+    aria-atomic="true"
+></div>
+
+
+
+<!-- =========================================================
+     MODAL DE SINCRONIZACIÓN
+========================================================= -->
+
+<div
+    id="syncModal"
+    class="modal hidden"
+    aria-hidden="true"
+>
+
+
+    <div class="modal-backdrop"></div>
+
+
+    <div
+        class="modal-content sync-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="syncModalTitle"
+    >
+
+
+        <div class="modal-topline">
+
+            <span>
+                SYNCDRIVE ENGINE
+            </span>
+
+            <span>
+                ACTIVE
+            </span>
+
+        </div>
+
+
+        <div class="modal-icon">
+            ⚡
+        </div>
+
+
+        <h2 id="syncModalTitle">
+            Sincronizando archivos
+        </h2>
+
+
+        <p id="syncStatus">
+            Preparando sincronización...
+        </p>
+
+
+
+        <!-- PROGRESO -->
+
+        <div class="progress-container">
+
+
+            <div class="progress-header">
+
+                <span>
+                    PROGRESO
+                </span>
+
+
+                <strong id="progressPercent">
+                    0%
+                </strong>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    id="progress"
+                    class="progress"
+                    style="width:0%;"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LOG -->
+
+        <div
+            id="syncLog"
+            class="sync-log"
+        ></div>
+
+
+
+        <!-- RESULTADO -->
+
+        <div
+            id="syncResult"
+            class="sync-result hidden"
+        >
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+
+            <h2>
+                ¡Sincronización completada!
+            </h2>
+
+
+            <p id="resultText">
+                Archivos sincronizados correctamente.
+            </p>
+
+
+            <div class="result-actions">
+
+
+                <button
+                    id="newSyncBtn"
+                    type="button"
+                    class="button secondary"
+                >
+                    Nueva sincronización
+                </button>
+
+
+                <button
+                    id="closeModalBtn"
+                    type="button"
+                    class="button primary"
+                >
+                    Cerrar
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     VISOR DE ARCHIVOS
+========================================================= -->
+
+<div
+    id="viewerModal"
+    class="modal hidden"
+    aria-hidden="true"
+>
+
+
+    <div class="modal-backdrop"></div>
+
+
+    <div
+        class="viewer"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="viewerTitle"
+    >
+
+
+        <div class="viewer-header">
+
+
+            <div class="viewer-file-info">
+
+                <span class="viewer-file-symbol">
+                    ◫
+                </span>
+
+
+                <div>
+
+                    <strong id="viewerTitle">
+                        Archivo
+                    </strong>
+
+
+                    <span id="viewerType">
+                        Documento
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="closeViewerBtn"
+                type="button"
+                class="close-button"
+                aria-label="Cerrar visor"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <div
+            id="viewerContent"
+            class="viewer-content"
+        ></div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script
+    type="module"
+    src="app.js"
+></script>
+
+
+
+</body>
+
+</html>
